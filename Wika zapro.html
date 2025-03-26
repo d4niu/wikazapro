@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serdecznie Zapraszam Na Moje 18 Urodziny Wiktorie Adamczyk</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .title {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .date, .confirm-text, .countdown-title {
+            font-size: 12px;
+            margin: 10px 0;
+        }
+        .countdown {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function checkPassword() {
+            var password = prompt("Siema! Wpisz kod z kartki aby przejść na strone:");
+            if (password !== "faja jebie mi towarem") { // Zmień na własne hasło
+                alert("Błędne hasło! Dostęp zabroniony.");
+                window.location.href = "https://google.com"; // Przekierowanie w razie błędu
+            }
+        }
+        window.onload = checkPassword;
+    </script>
+</head>
+<body>
+    <div class="title">Serdecznie Zapraszam Na Moje 18 Urodziny Wiktorie Adamczyk</div>
+    <div class="date">Data Urodzin: 02.08.2025</div>
+    <div class="countdown-title">Czas Pozostały Do Urodzin:</div>
+    <div id="birthdayCountdown" class="countdown"></div>
+    <div class="confirm-text">Obecność Należy Potwierdzić Do 01.08.2025</div>
+    <div class="countdown-title">Czas Pozostały Do Potwierdzenia Obecności:</div>
+    <div id="confirmationCountdown" class="countdown"></div>
+    <div class="confirm-text" style="margin-top: 30px;">Potwierdź Obecność Pod Numerem 000 000 000 Lub Poprzez Messenger</div>
+    
+    <script>
+        function updateCountdown(targetDate, elementId) {
+            let now = new Date().getTime();
+            let timeLeft = targetDate - now;
+            let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            document.getElementById(elementId).innerText = `${days} dni, ${hours} godz, ${minutes} min, ${seconds} sek`;
+        }
+        
+        let birthdayDate = new Date("2025-08-02T00:00:00").getTime();
+        let confirmationDate = new Date("2025-08-01T00:00:00").getTime();
+        
+        setInterval(() => {
+            updateCountdown(birthdayDate, "birthdayCountdown");
+            updateCountdown(confirmationDate, "confirmationCountdown");
+        }, 1000);
+    </script>
+</body>
+</html>
